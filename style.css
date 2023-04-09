@@ -117,3 +117,9 @@ header {
 #book-read-no {
     accent-color: #dc143c;
 }
+
+@media (max-width: 500px){
+    .book-row {
+        max-width: 225px;
+    }
+}
