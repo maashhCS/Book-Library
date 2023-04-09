@@ -60,10 +60,9 @@ function showBooksOnSite(index){
     newBookDiv.appendChild(newBookRead);
 }
 
+//Toggles the style display value from 'none' to 'block' and vice versa
 const bookButton = document.querySelector('#create-book-btn');
 const formDiv = document.querySelector('form');
-
-//Toggles the style display value from 'none' to 'block' and vice versa
 bookButton.addEventListener('click', (e) => {
     if(formDiv.style.display === 'none'){
         formDiv.style.display = 'block';
@@ -73,10 +72,6 @@ bookButton.addEventListener('click', (e) => {
         e.currentTarget.textContent = 'Create Book';
     }
 });
-
-for(let i = 0; i < myLibrary.length; i++){
-    showBooksOnSite(i);
-}
 
 //Submits the data to the createBook function
 const submitButton = document.querySelector('#submit-book-btn');
