@@ -1,0 +1,119 @@
+* {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style-type: none;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    background-color: rgb(65, 65, 65);
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #dc143c;
+    color: white;
+    font-weight: 600;
+    height: 50px;
+    width: 100%;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.div-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.book-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 16px;
+    height: 200px;
+    width: 225px;
+    border: 2px #dc143c solid;
+    border-radius: 3px;
+}
+
+.book-title,
+.book-author,
+.book-pages,
+.book-read {
+    color: white;
+    font-size: 16px;
+}
+
+.book-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 1100px;
+}
+
+.form-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    max-width: 250px;
+    gap: 10px;
+    padding: 8px;
+    border: 1px #dc143c solid;
+    border-radius: 3px;
+}
+
+.form-div label, 
+.form-div legend {
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+}
+
+.form-div input {
+    padding-left: 2px;
+    overflow: hidden;
+}
+
+.form-div-radio {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    margin-top: 8px;
+}
+
+.btn {
+    padding: 8px;
+    background-color: #dc143c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+#book-read-yes {
+    accent-color: #dc143c;
+}
+
+#book-read-no {
+    accent-color: #dc143c;
+}

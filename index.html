@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js" defer></script>
+    <title>Books</title>
+</head>
+<body>
+    <header>
+        <div>Welcome to my book library</div>
+    </header>
+    <div class="container">
+        <div class="div-btn">
+            <button id="create-book-btn" class="btn">Create Book</button>
+        </div>
+        <div class="container-form">
+            <form action="" style="display: none;">
+                <div class="form-div">
+                    <label for="title">Title</label>
+                    <input type="text" id="title" name="title">
+                    <label for="title">Author</label>
+                    <input type="text" id="author" name="author">
+                    <label for="title">Pages</label>
+                    <input type="text" id="pages" name="pages">
+                    <legend style="margin-top: 12px;">Have you read this book?</legend>
+                    <div class="form-div-radio">
+                        <div class="radio-yes">
+                            <label for="book-read-yes">YES</label>
+                            <input type="radio" id="book-read-yes" name="book-read">
+                        </div>
+                        <div class="radio-no">
+                            <label for="book-read-no">NO</label>
+                            <input type="radio" id="book-read-no" name="book-read" checked>
+                        </div>
+                    </div>
+                    <button type="submit" id="submit-book-btn" class="btn">Submit</button>
+                </div>
+            </form>
+        </div>
+        <div class="book-row"></div>
+    </div>
+</body>
+</html>
