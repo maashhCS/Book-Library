@@ -25,13 +25,13 @@ function addBookToLibrary(book) {
 function createBook(title, author, pages, read){
     const newBook = new Book(title, author, pages, read);
     newBook.bookId = bookId;
-    bookId++;
     addBookToLibrary(newBook);
 }
 
 //Creates a div that shows the Object values of the book
 const bookRow = document.querySelector('.book-row');
 function showBooksOnSite(index){
+    //DOM variables
     const newBookDiv = document.createElement('div');
     const newBookTitle = document.createElement('h1');
     const newBookAuthor = document.createElement('h1');
@@ -41,7 +41,8 @@ function showBooksOnSite(index){
     const newToggleReadButton = document.createElement('button');
     const newButtonDiv = document.createElement('div');
 
-    newBookDiv.classList.add(`book-div`);
+    //Add class
+    newBookDiv.classList.add('book-div');
     newBookTitle.classList.add(`book-title`);
     newBookAuthor.classList.add(`book-author`);
     newBookPages.classList.add(`book-pages`);
@@ -50,6 +51,11 @@ function showBooksOnSite(index){
     newDeleteButton.classList.add('btn');
     newToggleReadButton.classList.add('btn');
 
+    //Add id
+    newDeleteButton.setAttribute('id','delete-btn');
+    newToggleReadButton.setAttribute('id','toggle-read-btn');
+
+    //Change text content
     newBookTitle.textContent = `${myLibrary[index].title}`;
     newBookAuthor.textContent = `By ${myLibrary[index].author}`;
     newBookPages.textContent = `Pages ${myLibrary[index].pages}`;
@@ -61,6 +67,7 @@ function showBooksOnSite(index){
     newDeleteButton.textContent = "Delete";
     newToggleReadButton.textContent = "Change Status";
 
+    //
     bookRow.appendChild(newBookDiv);
     newBookDiv.appendChild(newBookTitle);
     newBookDiv.appendChild(newBookAuthor);
@@ -69,6 +76,39 @@ function showBooksOnSite(index){
     newBookDiv.appendChild(newButtonDiv);
     newButtonDiv.appendChild(newDeleteButton);
     newButtonDiv.appendChild(newToggleReadButton);
+
+    //Delete and change status button EventListener
+    const bookDivButtons = document.querySelectorAll('.book-button-div > button');
+    bookDivButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            if(e.target.matches('#delete-btn')){
+                for(let i = 0; i < myLibrary.length; i++){
+                    console.log(myLibrary[i]);
+                    if(e.target.parentElement.parentElement.children[0].innerText === myLibrary[i].title){
+                        const deleteDiv = e.target.parentElement.parentElement;
+                        myLibrary.splice(i, 1);
+                        deleteDiv.remove(); 
+                    }
+                }
+            } else if(e.target.matches('#toggle-read-btn')){
+                for(let i = 0; i < myLibrary.length; i++){
+                    if(e.target.parentElement.parentElement.children[0].innerText === myLibrary[i].title){
+                        console.log(e);
+                        console.log(myLibrary[i].read);
+                        if(myLibrary[i].read === true){
+                            myLibrary[i].read = false;
+                            console.log(myLibrary[i].read);
+                            e.target.parentElement.parentElement.children[3].innerText = 'Read: No'
+                        } else {
+                            myLibrary[i].read = true;
+                            console.log(myLibrary[i].read);
+                            e.target.parentElement.parentElement.children[3].innerText = 'Read: Yes'
+                        }
+                    }
+                }
+            }
+        })
+    })
 }
 
 //Toggles the style display value from 'none' to 'block' and vice versa
@@ -82,7 +122,7 @@ bookButton.addEventListener('click', (e) => {
         formDiv.style.display = 'none';
         e.currentTarget.textContent = 'Create Book';
     }
-});
+})
 
 //Submits the data to the createBook function
 const submitButton = document.querySelector('#submit-book-btn');
@@ -91,14 +131,28 @@ submitButton.addEventListener('click', (e) => {
     createBook(inputTitle.value, inputAuthor.value, inputPages.value, inputReadYes.checked);
     clearInput();
     formDiv.style.display = 'none';
-    showBooksOnSite(bookId - 1);
+    showBooksOnSite(bookId);
     bookButton.textContent = 'Create Book';
-});
+    bookId++;
+})
 
 //Clears the input fields
 function clearInput(){
     inputTitle.value = "";
     inputAuthor.value = "";
     inputPages.value = 0;
-    inputReadYes.checked = false;
+    inputReadNo.checked = true;
+}
+
+//Loops through the myLibrary array and creates a new Book div on the page for every Book Object in the Array
+function loopLibrary(){
+    for(let i = 0; i < myLibrary.length; i++){
+        const deleteBookRowChildren = document.querySelector('.book-row');
+        let delChildren = deleteBookRowChildren.lastChild;
+        while(delChildren){
+            deleteBookRowChildren.removeChild(delChildren);
+            delChildren = deleteBookRowChildren.lastChild;
+        }
+        showBooksOnSite(i);
+    }
 }
