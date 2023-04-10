@@ -118,6 +118,13 @@ header {
     accent-color: #dc143c;
 }
 
+.book-button-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
 @media (max-width: 500px){
     .book-row {
         max-width: 225px;

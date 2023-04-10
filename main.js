@@ -37,12 +37,18 @@ function showBooksOnSite(index){
     const newBookAuthor = document.createElement('h1');
     const newBookPages = document.createElement('h1');
     const newBookRead = document.createElement('h1');
+    const newDeleteButton = document.createElement('button');
+    const newToggleReadButton = document.createElement('button');
+    const newButtonDiv = document.createElement('div');
 
     newBookDiv.classList.add(`book-div`);
     newBookTitle.classList.add(`book-title`);
     newBookAuthor.classList.add(`book-author`);
     newBookPages.classList.add(`book-pages`);
     newBookRead.classList.add(`book-read`);
+    newButtonDiv.classList.add('book-button-div');
+    newDeleteButton.classList.add('btn');
+    newToggleReadButton.classList.add('btn');
 
     newBookTitle.textContent = `${myLibrary[index].title}`;
     newBookAuthor.textContent = `By ${myLibrary[index].author}`;
@@ -52,12 +58,17 @@ function showBooksOnSite(index){
     } else {
         newBookRead.textContent = `Read: No`;
     }
+    newDeleteButton.textContent = "Delete";
+    newToggleReadButton.textContent = "Change Status";
 
     bookRow.appendChild(newBookDiv);
     newBookDiv.appendChild(newBookTitle);
     newBookDiv.appendChild(newBookAuthor);
     newBookDiv.appendChild(newBookPages);
     newBookDiv.appendChild(newBookRead);
+    newBookDiv.appendChild(newButtonDiv);
+    newButtonDiv.appendChild(newDeleteButton);
+    newButtonDiv.appendChild(newToggleReadButton);
 }
 
 //Toggles the style display value from 'none' to 'block' and vice versa
