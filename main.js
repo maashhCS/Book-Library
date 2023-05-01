@@ -108,22 +108,29 @@ function showBooksOnSite(){
 const bookButton = document.querySelector('#create-book-btn');
 const formDiv = document.querySelector('form');
 bookButton.addEventListener('click', (e) => {
-    if(formDiv.style.display === 'none'){
-        formDiv.style.display = 'block';
+    if(formDiv.classList.contains('hidden')){
+        formDiv.classList.remove('hidden')
         e.currentTarget.textContent = 'Cancel';
+        clearInput();
     } else {
-        formDiv.style.display = 'none';
+        formDiv.classList.add('hidden')
         e.currentTarget.textContent = 'Create Book';
+        clearInput();
     }
 })
 
 //Submits the data to the createBook function and displays it on the page
 const submitButton = document.querySelector('#submit-book-btn');
+const paragraphError = document.querySelector('.input-fields-error')
 submitButton.addEventListener('click', (e) => {
     e.preventDefault();
+    if(inputTitle.value === '' || inputAuthor.value === '' || inputPages.value === ''){
+        paragraphError.classList.remove('hidden');
+        return;
+    }
     createBook(inputTitle.value, inputAuthor.value, inputPages.value, inputReadYes.checked);
     clearInput();
-    formDiv.style.display = 'none';
+    formDiv.classList.add('hidden');
     bookButton.textContent = 'Create Book';
     deleteDiv();
     showBooksOnSite();
@@ -135,6 +142,7 @@ function clearInput(){
     inputAuthor.value = "";
     inputPages.value = "";
     inputReadNo.checked = true;
+    paragraphError.classList.add('hidden');
 }
 
 //Deletes every child inside the div 'book-row'

@@ -17,7 +17,7 @@
             <button id="create-book-btn" class="btn">Create Book</button>
         </div>
         <div class="container-form">
-            <form action="" style="display: none;">
+            <form action="" class="hidden">
                 <div class="form-div">
                     <label for="title">Title</label>
                     <input type="text" id="title" name="title" placeholder="Book Title">
@@ -36,6 +36,7 @@
                             <input type="radio" id="book-read-no" name="book-read" checked>
                         </div>
                     </div>
+                    <p class="hidden input-fields-error">You have to fill out every field!</p>
                     <button type="submit" id="submit-book-btn" class="btn">Submit</button>
                 </div>
             </form>

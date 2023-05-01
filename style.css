@@ -26,6 +26,15 @@ header {
     width: 100%;
 }
 
+.hidden {
+    display: none;
+}
+
+.input-fields-error {
+    color: #dc143c;
+    font-weight: 600;
+}
+
 .container {
     display: flex;
     flex-direction: column;
@@ -76,7 +85,7 @@ header {
     max-width: 250px;
     gap: 10px;
     padding: 8px;
-    border: 1px #dc143c solid;
+    border: 2px #dc143c solid;
     border-radius: 3px;
 }
 
